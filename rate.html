@@ -1,132 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Form Feedback</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Website Saya</title>
+    <link rel="stylesheet" href="styles.css">
+<title>Feedback Form</title>
 <style>
     body {
-        background-color: #333;
+        background-color: #1a1a1a;
         color: #fff;
         font-family: Arial, sans-serif;
-        padding: 20px;
     }
-    form {
-        max-width: 350px;
+
+    .container {
+        max-width: 600px;
+        width: 490px;
         margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #555;
+        border-radius: 5px;
+        background-color: #222;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     }
-    input, textarea, button {
-        width: 100%;
+
+    h2 {
+        color: #f0ad4e;
+        text-align: center;
+    }
+
+    p {
+        color: #ccc;
+    }
+
+    input[type="radio"] {
+        display: none;
+    }
+
+    label {
+        display: inline-block;
+        width: 20px;
+        height: auto;
+        background-color: transparent;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+        margin-right: 10px;
+        align-items: center;
+        font-size: 20px;
+        color: #f0ad4e;
+        text-align: center;
+    }
+
+    input[type="radio"]:checked + label {
+        color: white;
+    }
+
+    textarea {
+        width: 96%;
+        height: 100px;
+        margin: 10px 0;
         padding: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
+        border: 1px solid #555;
         border-radius: 5px;
         background-color: #444;
-        color: #fff;
-        box-sizing: border-box; /* Menambahkan properti box-sizing */
+        color: #ccc;
     }
+
     button {
-        background-color: #007bff;
-        color: #fff;
+        padding: 10px 20px;
+        background-color: #f0ad4e;
+        color: #222;
+        border: none;
+        border-radius: 5px;
         cursor: pointer;
     }
 
-    /* Style untuk popup */
-    .custom-alert {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: #333;
-        color: #fff;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        z-index: 9999;
+    button:hover {
+        background-color: #d9534f;
     }
 
-    /* Style untuk container */
-    .container {
-        max-width: 350px;
-        margin: 0 auto;
-        text-align: center;
-        margin-top: 20px;
+    #notification {
+        color: #d9534f;
+        margin-top: 10px;
     }
+            #botom {
+            background-color: #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            color: #00e6ac;
+        }
 
-    /* Style untuk kebijakan dan privasi */
-    .privacy-policy {
-        margin-top: 50px;
-        padding: 20px;
-        background-color: #555;
-        border-radius: 5px;
-    }
+        .visit-btn {
+            background-color: #ff66b2;
+            color: #fff;
+            border: none;
+            font-size: 20px;
+            padding: 8px 50.3%;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            top: 9px;
+            right: 10px;
+        }
+
+        .menu {
+            padding: 10px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu a {
+            margin-right: 25px;
+            margin-left: 25px;
+            text-decoration: none;
+            color: #ff9933;
+            padding: 5px;
+            width: 110px;
+            text-align: center;
+        }
 </style>
 </head>
 <body>
-
-    <h1>Feedback Form</h1>
-    <form id="feedbackForm">
-        <input type="text" id="username" placeholder="Username">
-        <textarea id="comment" placeholder="Komentar"></textarea>
-        <input type="number" id="rate" placeholder="Rate">
-        <button type="submit">Kirim</button>
-    </form>
-
-    <div class="custom-alert" id="customAlert">
-        <p id="alertMessage"></p>
-        <button onclick="closeAlert()">OK</button>
+<div class="container">
+    <h2>Feedback Form</h2>
+    <div>
+        <input type="radio" id="star1" name="rating" value="1">
+        <label for="star1">✭</label>
+        <input type="radio" id="star2" name="rating" value="2">
+        <label for="star2">✭</label>
+        <input type="radio" id="star3" name="rating" value="3">
+        <label for="star3">✭</label>
+        <input type="radio" id="star4" name="rating" value="4">
+        <label for="star4">✭</label>
+        <input type="radio" id="star5" name="rating" value="5">
+        <label for="star5">✭</label>
     </div>
+    <textarea id="feedbackText" placeholder="Tulis saran atau rekomendasi Anda"></textarea>
+    <button onclick="sendFeedback()">Kirim</button>
+    <p id="notification"></p>
+        <header id="botom">
+        <div class="menu">
+            <a href="index.html"><span class="glyphicon glyphicon-home"></span></a>
+            <a href="com.html"><span class="glyphicon glyphicon-bullhorn"></span></a>
+            <a href="dev.html"><span class="glyphicon glyphicon-user"></span></a>
+            <a href="rate.html"><span class="glyphicon glyphicon-star"></span></a>
+            <a href="donate.html"><span class="glyphicon glyphicon-credit-card"></span></a>
+        </div>
+    </header>
+</div>
 
-    <div class="privacy-policy">
-        <h2>Kebijakan dan Privasi</h2>
-        <p>
-            Website "DumpMe" adalah sebuah platform yang dibuat semata-mata untuk tujuan hiburan dan pengembangan pribadi. Kami ingin memastikan bahwa setiap pengguna dapat merasa aman dan nyaman saat mengakses situs web kami. Dengan itu, kami ingin memberikan jaminan bahwa website DumpMe tidak akan meminta atau memerlukan izin akses apa pun dari pengguna.
-        </p>
-        <p>
-            Kami berkomitmen untuk menjaga privasi dan keamanan data pengguna dengan serius. Meskipun website DumpMe hanya digunakan untuk bersenang-senang dan sebagai wadah untuk mengumpulkan hasil belajar kami, kami tetap menjaga standar etika dan keamanan yang tinggi dalam mengelola informasi pengguna.
-        </p>
-        <p>
-            Kami tidak akan menyimpan informasi pribadi pengguna tanpa persetujuan mereka. Setiap kegiatan yang dilakukan di website DumpMe dirancang dengan tujuan memberikan pengalaman yang menyenangkan dan bermanfaat bagi pengguna tanpa mengorbankan privasi dan keamanan mereka.
-        </p>
-        <p>
-            Kami senantiasa mengikuti pembaharuan kebijakan privasi dan berkomitmen untuk memberikan transparansi dalam pengelolaan data pengguna. Sebagai tim di balik website DumpMe, kami selalu siap menerima masukan dan saran dari pengguna untuk terus meningkatkan layanan kami.
-        </p>
-        <p>
-            Terima kasih telah bergabung dengan komunitas DumpMe dan kami berharap Anda menikmati pengalaman bersenang-senang di platform kami tanpa perlu khawatir akan keamanan dan privasi data Anda.
-        </p>
-    </div>
+<script>
+    function sendFeedback() {
+        const rating = document.querySelector('input[name="rating"]:checked');
+        const feedbackText = document.getElementById('feedbackText').value;
+        const notification = document.getElementById('notification');
 
-    <script>
-        const form = document.getElementById('feedbackForm');
-        const customAlert = document.getElementById('customAlert');
-        const alertMessage = document.getElementById('alertMessage');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const username = document.getElementById('username').value;
-            const comment = document.getElementById('comment').value;
-            const rate = document.getElementById('rate').value;
-
-            if (username.length < 3) {
-                showAlert('Setidaknya Masukan Nama 3 Huruf');
-            } else if (comment.split(' ').length < 5) {
-                showAlert('Setidaknya 5 Kata Komentar Yang Dimasukan');
-            } else {
-                const message = `Username: ${username}\nKomentar: ${comment}\nRate: ${rate}`;
-                window.open(`https://api.whatsapp.com/send?phone=6285795406671&text=${encodeURIComponent(message)}`, '_blank');
-            }
-        });
-
-        function showAlert(message) {
-            alertMessage.textContent = message;
-            customAlert.style.display = 'block';
+        if (rating && feedbackText) {
+            const message = `Rate: ${getRatingMeaning(rating.value)} Bintang ${rating.value}\nDeskripsi: ${feedbackText}`;
+            // Kirim pesan ke nomor WhatsApp
+            window.location.href = `https://wa.me/6285795406671?text=${encodeURIComponent(message)}`;
+        } else {
+            notification.textContent = "Wajib Mengisi";
         }
+    }
 
-        function closeAlert() {
-            customAlert.style.display = 'none';
+    function getRatingMeaning(rating) {
+        switch (rating) {
+            case '1':
+                return 'Jelek';
+            case '2':
+                return 'Lumayan';
+            case '3':
+                return 'Bagus';
+            case '4':
+                return 'Bagus Banget';
+            case '5':
+                return 'Respect';
+            default:
+                return '';
         }
-    </script>
+    }
+</script>
 </body>
 </html>
